@@ -9,10 +9,10 @@ public class GameRunner {
 
 	private static boolean notAWinner;
 
-	public static void main(String[] args) {
-		Random rand = new Random();
-		run(rand, System.out);
-	}
+//	public static void main(String[] args) {
+//		Random rand = new Random();
+//		run(rand, System.out);
+//	}
 
 	public static void run(Random rand, PrintStream out) {
 		Game aGame = new Game(out);
@@ -27,5 +27,11 @@ public class GameRunner {
 				notAWinner = aGame.wasCorrectlyAnswered();
 			}
 		} while (notAWinner);
+	}
+
+	public static void runAThousandGames(PrintStream out) {
+		Random rand = new Random(7919);
+		for (int i = 0; i < 1000; i++)
+			GameRunner.run(rand, out);
 	}
 }

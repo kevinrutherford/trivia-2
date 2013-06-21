@@ -4,13 +4,18 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 
 public class GoldenMaster {
 
 	private static final String MASTER_FILENAME = "./master.txt";
 
-	public File asFile() {
-		return new File(MASTER_FILENAME);
+	public static void generate() throws IOException {
+		GameRunner.runAThousandGames(new PrintStream(MASTER_FILENAME));
+	}
+
+	public static void main(String[] args) throws IOException {
+		generate();
 	}
 
 	public String currentValue() {
