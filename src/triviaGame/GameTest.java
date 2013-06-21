@@ -14,22 +14,6 @@ import org.junit.Test;
 
 public class GameTest {
 
-	private static final String MASTER_FILENAME = "./master.txt";
-
-	private static String readFileAsString(String filePath) throws IOException {
-		DataInputStream dis = new DataInputStream(new FileInputStream(filePath));
-		try {
-			long len = new File(filePath).length();
-			if (len > Integer.MAX_VALUE)
-				throw new IOException("File " + filePath + " too large, was " + len + " bytes.");
-			byte[] bytes = new byte[(int) len];
-			dis.readFully(bytes);
-			return new String(bytes, "UTF-8");
-		} finally {
-			dis.close();
-		}
-	}
-
 	public void thousandTimes(PrintStream out) {
 		Random rand = new Random(7919);
 		for (int i = 0; i < 1000; i++)
@@ -37,12 +21,12 @@ public class GameTest {
 	}
 
 	public void generateMaster() throws IOException {
-		thousandTimes(new PrintStream(MASTER_FILENAME));
+		thousandTimes(new PrintStream(new GoldenMaster().asFile()));
 	}
 
 	@Test
 	public void characterizationTest() throws IOException {
-		String master = readFileAsString(MASTER_FILENAME);
+		String master = new GoldenMaster().currentValue();
 		ByteArrayOutputStream outputString = new ByteArrayOutputStream();
 		thousandTimes(new PrintStream(outputString));
 		assertEquals(master, outputString.toString());
