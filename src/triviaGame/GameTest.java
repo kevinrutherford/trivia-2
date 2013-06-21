@@ -3,9 +3,6 @@ package triviaGame;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Random;
@@ -14,22 +11,22 @@ import org.junit.Test;
 
 public class GameTest {
 
-	public void thousandTimes(PrintStream out) {
+	public static void runAThousandGames(PrintStream out) {
 		Random rand = new Random(7919);
 		for (int i = 0; i < 1000; i++)
 			GameRunner.run(rand, out);
 	}
 
 	public void generateMaster() throws IOException {
-		thousandTimes(new PrintStream(new GoldenMaster().asFile()));
+		runAThousandGames(new PrintStream(new GoldenMaster().asFile()));
 	}
 
 	@Test
 	public void characterizationTest() throws IOException {
 		String master = new GoldenMaster().currentValue();
-		ByteArrayOutputStream outputString = new ByteArrayOutputStream();
-		thousandTimes(new PrintStream(outputString));
-		assertEquals(master, outputString.toString());
+		ByteArrayOutputStream outputBuffer = new ByteArrayOutputStream();
+		runAThousandGames(new PrintStream(outputBuffer));
+		assertEquals(master, outputBuffer.toString());
 	}
 
 	@Test
