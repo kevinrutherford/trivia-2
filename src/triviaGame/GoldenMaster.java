@@ -10,12 +10,8 @@ public class GoldenMaster {
 
 	private static final String MASTER_FILENAME = "./master.txt";
 
-	public static void generate() throws IOException {
-		GameRunner.runAThousandGames(new PrintStream(MASTER_FILENAME));
-	}
-
 	public static void main(String[] args) throws IOException {
-		generate();
+		GameRunner.runAThousandGames(new PrintStream(MASTER_FILENAME));
 	}
 
 	public String currentValue() {

@@ -23,9 +23,13 @@ public class GameTest {
 		Game game = new Game();
 		game.add("player1");
 		game.add("player2");
+		assertTrue(game.isPlayable());
 		game.add("player3");
+		assertTrue(game.isPlayable());
 		game.add("player4");
+		assertTrue(game.isPlayable());
 		game.add("player5");
+		assertTrue(game.isPlayable());
 		game.add("player6");
 		assertTrue(game.isPlayable());
 	}
