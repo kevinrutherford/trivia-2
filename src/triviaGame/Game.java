@@ -29,10 +29,6 @@ public class Game {
 		}
 	}
 
-	public Game() {
-		this(System.out);
-	}
-
 	public String createRockQuestion(int index) {
 		return "Rock Question " + index;
 	}

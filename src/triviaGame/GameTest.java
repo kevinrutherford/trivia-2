@@ -20,7 +20,7 @@ public class GameTest {
 
 	@Test
 	public void offByOneError() throws Exception {
-		Game game = new Game();
+		Game game = new Game(System.out);
 		game.add("player1");
 		game.add("player2");
 		assertTrue(game.isPlayable());
